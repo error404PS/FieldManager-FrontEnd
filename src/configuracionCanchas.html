@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/img/favicon.ico" type="image/x-icon">
+        <title>FieldManager - Configuracion de canchas</title>
+        <link rel="stylesheet" href="../static/styles/styles.css">
+        <link rel="stylesheet" href="../static/styles/output.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    </head>
+    <body class="min-h-screen flex flex-col">
+        <!-- Header -->
+        <header class="fixed top-0 w-full flex justify-between items-center bg-palette-tertiary-color bg-opacity-100 h-20 px-8 z-50">
+            <div class="flex items-center mr-auto">
+                <a href="../src/landingPage.html" class="flex items-center mr-4">
+                    <img src="../img/logo-fieldManager.png" alt="Logo" class="h-12 pr-4">
+                </a>
+                <div class="text-white text-2xl font-semiboldtracking-widest-extra">
+                    FIELDMANAGER
+                </div>
+            </div>
+            <div class="flex items-center gap-10">
+                <div id="inicial-usuario" class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center text-xl font-semibold text-gray-700">
+                    
+                </div>
+            </div>
+        </header>
+        <div class="flex flex-grow">
+            <!-- Sidebar -->
+            <aside class="w-72 min-w-72 bg-palette-secundary-color text-white flex flex-col mt-20 z-10">
+                <nav class="flex-grow p-5 space-y-4 fixed">
+                    <ul class="mb-[34rem] space-y-4">
+                        <li><a href="statistics.html" class="flex items-center w-64 gap-2 p-3 rounded hover:bg-gray-700"><i class="material-icons">home</i>Inicio</a></li>
+                        <li><a href="reservation-management.html" class="flex  w-64 items-center gap-2 p-3 rounded hover:bg-gray-700"><i class="material-icons">calendar_today</i> Reservas</a></li>
+                        <li><a href="configuracionCanchas.html" class="flex  w-64 items-center gap-2 p-3 rounded bg-gray-700"><i class="material-icons">stadium</i> Canchas</a></li>
+                    </ul>
+                    <div class="mt-auto">
+                      <a id="logoutButton" href="#" class="flex items-center gap-2 p-2 rounded text-red-400 hover:bg-gray-700">
+                          <i class="material-icons">logout</i> Cerrar sesión
+                      </a>
+                  </div>
+                </nav>
+            </aside>
+            <!-- Main Content Area -->
+            <main class="flex-grow p-10 bg-palette-tertiary-color text-white">
+                <section class="reservation-container pt-12">
+                    <div class="container m-auto">
+                        <div class="container-section-filter justify-items-center">     
+                            <h2 class="text-3xl mt-5 text-center font-semibold tracking-widest-extra py-5 w-full border-y border-palette-primary-color mb-5">Canchas</h2> 
+                            
+                        </div>
+                    </div>
+                </section>
+                <section class="fields-container pb-12">
+                    <div class="container py-4 justify-items-center">
+                        <button id ="new-field"class="new-field-button text-xl block bg-palette-primary-color py-3 p-5 rounded-md font-semibold hover:bg-white hover:text-palette-accent-color hover:shadow-palette-primary-color text-palette-accent-color " >Nueva  cancha </button>
+                    </div>
+
+                    <div class="container m-auto">
+                        <div class="container-section-filter">     
+                            <ul class="field-list-config">                                
+                                <div class="field-data-config px-10 py-6 bg-palette-secundary-color rounded-lg mb-5 mt-5 hidden">
+                                    <li class="flex flex-col gap-2 p-2 rounded text-white">
+                                        <div class="preview flex items-center cursor-pointer" onclick="toggleExpandFieldConfig(this.closest('.field-data-config'))">
+                                            <div class="flex gap-8 flex-grow">
+                                                <span class="flex item-center font-bold  text-xl"><i class="material-icons mr-4">sports_soccer</i>Cancha 1</span>
+                                                <span class="flex item-center text-xl"><i class="material-icons mr-4">group</i>Tamaño: 11</span>
+                                                <span class="flex item-center text-xl"><i class="material-icons mr-4">grass</i>Terreno: césped sintético</span>
+                                            </div>                                           
+                                            <div class="ml-auto">
+                                                <i class="material-icons">keyboard_double_arrow_down</i>
+                                            </div>                                         
+                                        </div>                                                                                                                                                                                                                                            
+                                        <div class="content gap-2 hidden px-6 rounded-lg">
+                                            <div class="flex justify-between items-center mb-2 cursor-pointer" onclick="toggleExpandFieldConfig(this.closest('.field-data-config'))">
+                                                <div class="flex-grow"></div> 
+                                                <div class="mr-0"> 
+                                                    <i class="material-icons">keyboard_double_arrow_up</i>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-stretch">                                                                                   
+                                                <div class="flex-shrink-0">
+                                                    <img src="" alt="Imagen de la cancha" class="object-contain w-[42rem] max-h-[30rem] rounded-lg mb-5">
+                                                </div>
+                                                <div class= "border-l-2 border-palette-primary-color h-auto mx-2 my-4 ml-10 mr-24"></div>
+                                                <div>
+                                                    <div class="flex">
+                                                        <ul>
+                                                            <li class="text-white text-xl w-90 h-10 rounded-lg flex items-center  py-2 mb-2">
+                                                                <h2 class="flex items-center mr-4"><i class="material-icons mr-4">group</i>Tamaño:</h2>
+                                                                <input type="number" min="1" placeholder="11" class="border rounded-md pl-4 w-1/6 mb-0 align-middle border-palette-primary-color bg-palette-tertiary-color" disabled>
+                                                            </li>
+                                                            
+                                                            <li class="text-white text-xl w-90 h-10 rounded-lg flex items-center  py-2">
+                                                                <h2 class="flex items-center mr-4"><i class="material-icons mr-4">grass</i>Terreno:</h2>
+                                                                <select name="" id="" class="border rounded-md px-4 w-auto mb-0 align-middle border-palette-primary-color bg-palette-tertiary-color" disabled>
+                                                                    <option value="" disabled hidden >Cesped sintetico</option>
+                                                                    <option value="1">Cesped natural</option>
+                                                                    <option value="2">Cesped sintetico</option>
+                                                                    <option value="3">Vinilico</option>
+                                                                </select>
+                                                            </li>
+                                                        </ul>
+                                                    </div>                        
+                                                    <div class="py-5 mb-2">                                      
+                                                        <h2 class= "text-white text-xl mb-6"><i class="material-icons mr-4 align-middle">update</i>Dias disponibles</h2>
+                                                        <ul class="space-y-1">
+                                                            <div class="flex flex-wrap gap-2">
+                                                                <button class="bg-palette-tertiary-color text-white text-xl w-auto h-10 rounded-lg font-mono flex items-center justify-center py-2 px-4">
+                                                                    Lunes
+                                                                </button>
+                                                                <button class="bg-palette-tertiary-color text-white text-xl w-auto h-10 rounded-lg font-mono  flex items-center justify-center py-2 px-4">
+                                                                    Martes
+                                                                </button>
+                                                                <button class="bg-palette-tertiary-color text-white text-xl w-auto h-10 rounded-lg font-mono flex items-center justify-center py-2 px-4">
+                                                                    Miercoles
+                                                                </button>
+                                                                <button class="bg-palette-tertiary-color text-white text-xl w-auto h-10 rounded-lg font-mono  flex items-center justify-center py-2 px-4">
+                                                                    Jueves
+                                                                </button>
+                                                                <button class="bg-palette-tertiary-color text-white text-xl w-auto h-10 rounded-lg font-mono flex items-center justify-center py-2 px-4">
+                                                                    Viernes
+                                                                </button>
+                                                                <button class="bg-palette-tertiary-color text-white text-xl w-auto h-10 rounded-lg font-mono  flex items-center justify-center py-2 px-4">
+                                                                    Sabado
+                                                                </button>
+                                                                <button class="bg-palette-tertiary-color  text-white text-xl w-auto h-10 rounded-lg font-mono  flex items-center justify-center py-2 px-4">
+                                                                    Domingo
+                                                                </button>
+                                                          </div>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="py-5 mb-2">
+                                                        <div class="text-white text-xl w-90 h-10 rounded-lg flex items-center py-2 mb-6">
+                                                            <h2 class= "text-white text-xl w-auto h-10 rounded-lg font-mono flex items-center justify-center mr-4">
+                                                                <i class="material-icons mr-4 align-middle">update</i>Horarios
+                                                            </h2>
+                                                            <button class="bg-palette-tertiary-color  text-xl w-auto h-10 rounded-lg font-mono flex items-center justify-center py-2 px-4">
+                                                                <i class="material-icons text-palette-primary-color align-middle">add</i>
+                                                            </button>
+                                                        </div>
+                                                        
+                                                        <ul class="space-y-1">
+                                                            <div class="flex-col flex-wrap gap-2">
+                                                                <li class="text-white text-xl w-90 h-10 rounded-lg flex items-center py-2 mb-2">
+                                                                    <!-- Ajustar el diseño aquí -->
+                                                                    <div class="flex items-center gap-2">
+                                                                        <!-- Horario -->
+                                                                        <p class="bg-palette-tertiary-color text-white text-xl w-auto h-10 rounded-lg font-mono flex items-center justify-center py-2 px-4">
+                                                                            8:00 - 16:00
+                                                                        </p>
+                                                                        <!-- Botones -->
+                                                                        <button class="bg-palette-tertiary-color text-xl w-auto h-10 rounded-lg font-mono flex items-center justify-center py-2 px-4">
+                                                                            <i class="material-icons align-middle text-white">edit</i>
+                                                                        </button>
+                                                                        <button class="bg-palette-tertiary-color  text-xl w-auto h-10 rounded-lg font-mono flex items-center justify-center py-2 px-4">
+                                                                            <i class="material-icons text-red-900 align-middle">delete</i>
+                                                                        </button>
+                                                                    </div>
+                                                                </li>
+                                                            </div>
+                                                        </ul>
+                                                    </div>                                                                                                                                      
+                                                </div>                                                                                                             
+                                            </div>
+                                            
+                                            <div class="border-b-2 border-palette-primary-color my-4"></div>
+                                            <div class="w-full flex justify-center mt-10 mb-2">                              
+                                                <button class="btn-start-now text-xl block  bg-red-900 py-3 p-5 mx-3 rounded-md font-semibold  hover:bg-white hover:text-red-600 hover:shadow-palette-primary-color text-white">Eliminar</button>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </div>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+
+        
+        
+        <script src="../static/js/components/viewFieldDetails.js"></script>
+        <script type="module" src="../static/js/views/configApp.js"></script>
+        <script type="module" src="../static/js/components/alerts.js"></script>
+        
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+        
+    </body>
+</html>

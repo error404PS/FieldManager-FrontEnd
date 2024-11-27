@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/img/favicon.ico" type="image/x-icon">
+        <title>FieldManager - Administración de Reservas</title>
+        <link rel="stylesheet" href="../static/styles/output.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    </head>
+
+    <body class="min-h-screen flex flex-col">
+        <!-- Header -->
+        <body class="min-h-screen flex flex-col">
+            <header class="fixed top-0 w-full flex justify-between items-center bg-palette-tertiary-color bg-opacity-100 h-20 px-8 z-50">
+                <div class="flex items-center mr-auto">
+                    <a href="../src/landingPage.html" class="flex items-center mr-4">
+                        <img src="../img/logo-fieldManager.png" alt="Logo" class="h-12 pr-4">
+                    </a>
+                    <div class="text-white text-2xl font-semiboldtracking-widest-extra">
+                        FIELDMANAGER
+                    </div>
+                </div>
+                <div class="flex items-center gap-10">
+                    <div id="inicial-usuario" class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center text-xl font-semibold text-gray-700">
+                        
+                    </div>
+                </div>
+            </header>
+
+        <div class="flex flex-grow">
+            <!-- Sidebar -->
+            <aside class="w-72 min-w-72 bg-palette-secundary-color text-white flex flex-col mt-20 z-10">
+                <nav class="flex-grow p-5 space-y-4 fixed">
+                    <ul class="mb-[34rem] space-y-4">
+                        <li><a href="statistics.html" class="flex  w-64 items-center gap-2 p-3 rounded hover:bg-gray-700"><i class="material-icons">home</i>Inicio</a></li>
+                        <li><a href="reservation-management.html" class="flex w-64 items-center gap-2 p-3 rounded bg-gray-700"><i class="material-icons">calendar_today</i>Reservas</a></li>
+                        <li><a href="configuracionCanchas.html" class="flex w-64 items-center gap-2 p-3 rounded hover:bg-gray-700"><i class="material-icons">stadium</i>Canchas</a></li>
+                    </ul>
+                    <div class="mt-auto">
+                        <a id="logoutButton" href="#" class="flex items-center gap-2 p-2 rounded text-red-400 hover:bg-gray-700">
+                            <i class="material-icons">logout</i> Cerrar sesión
+                        </a>
+                  </div>
+                </nav>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="flex-grow p-10 bg-palette-tertiary-color text-white mt-12 justify-items-center">
+                <h1 class="text-3xl mt-5 text-center font-semibold tracking-widest-extra py-5 w-full border-y border-palette-primary-color mb-5">Administración de Reservas</h1>
+                                  
+                    <div class="my-5 flex items-center space-x-16">
+                        <div id="filter-reservations" class="p-2 justify-center text-center inline-flex items-center rounded-mdrelative">
+                            <label for="date" class="text-xl font-semibold tracking-widest text-palette-primary-color mr-4">Fecha de Reservas:</label>
+                            <div class="relative">
+                                <input 
+                                type="date" 
+                                id="date" 
+                                name="reservations" 
+                                class="w-72 h-10 p-2 pl-10 pr-14 rounded-md bg-palette-tertiary-color text-white border border-palette-primary-color focus:outline-none focus:ring focus:ring-palette-accent-color appearance-none"
+                                >
+                                <i 
+                                class="fas fa-calendar-alt absolute right-3 top-2.5 text-white text-l cursor-pointer"
+                                id="calendar-icon"
+                                ></i>
+                            </div>
+                        </div>
+                        <button id="clear-filters-btn" class="flex items-center gap-2 px-4 py-2 bg-palette-tertiary-color border border-palette-primary-color text-palette-primary-color rounded-md hover:bg-palette-accent-color">
+                            <i class="fas fa-eraser text-palette-primary-color"></i> Limpiar Filtros
+                        </button>
+                    </div>                   
+                     <!-- Tabs de navegación -->
+                    <div class="mt-5 bg-palette-secundary-color bg-opacity-20 rounded-md flex px-10 py-2 gap-10">
+                        <button class="tab tab-active px-6 py-2 text-md font-medium text-white border-b-4 hover:border-white" onclick="changeTab('reservas-activas')">Activas y Completadas</button>
+                        <button class="tab px-6 py-2 text-md font-medium text-white border-b-4 border-transparent hover:border-white" onclick="changeTab('reservas-canceladas')">Canceladas</button>
+                    </div>
+                <!-- reservas activas -->
+                <section id="reservas-filtradas" class="tab-content mt-5 bg-palette-secundary-color rounded-md p-8 mx-auto">
+                    <h2 class="text-2xl font-poppins tracking-widest drop-shadow-md font-semibold mb-4">RESERVAS DEL DÍA</h2>
+                    <hr class="border-palette-primary-color mb-4">
+                    <div id="contenedor-reservas" class="grid grid-cols-4 gap-6">
+                        <!-- reservas filtradas -->
+                    </div>
+                </section>
+                <!-- Sección de reservas canceladas -->
+                <section id="reservas-canceladas" class=" tab-content mt-12  bg-palette-secundary-color rounded-md p-8 mx-auto hidden">
+                    <h2 class="text-2xl font-poppins tracking-widest drop-shadow-md font-semibold mb-4">RESERVAS CANCELADAS</h2>
+                    <hr class="border-palette-primary-color mb-4">
+                    <div id="contenedor-canceladas" class="grid grid-cols-4 gap-6">
+                        <!-- reservas canceladas -->
+                    </div>
+                </section>
+            </main>
+        </div>
+
+        <!-- Modal para jugadores -->
+        <div id="playerModal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 hidden backdrop-blur-lg">
+            <div class="bg-palette-secundary-color text-white w-full max-w-2xl p-10 rounded-md">
+                <h2 class="text-center text-2xl font-semibold mb-5 pb-5 tracking-widest border-b border-palette-primary-color">Jugadores</h2>
+                <div id="players-list" class="grid grid-cols-2 gap-x-10 gap-y-10">
+                    <!-- jugadores -->
+                </div>
+                <div class="flex justify-center mt-10">
+                    <button id="closeModalBtn" class="text-lg bg-palette-primary-color py-2 px-10 rounded-md font-semibold hover:bg-white hover:text-palette-accent-color hover:shadow-palette-primary-color text-palette-accent-color">
+                        Cerrar
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Archivos JavaScript -->
+        <script type="module" src="/static/js/views/reservations-management.js"></script>
+        <script type="module" src="../static/js/components/modal-reservations.js"></script>
+        <script src="../static/js/components/tab-reservations.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    </body>
+</html>

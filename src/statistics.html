@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/img/favicon.ico" type="image/x-icon">
+        <title>FieldManager - Estadisticas </title>
+        <link rel="stylesheet" href="../static/styles/output.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">     
+    </head>
+
+    <body class="min-h-screen flex flex-col">
+        <header class="fixed top-0 w-full flex justify-between items-center bg-palette-tertiary-color bg-opacity-100 h-20 px-8 z-50">
+            <div class="flex items-center mr-auto">
+                <a href="../src/landingPage.html" class="flex items-center mr-4">
+                    <img src="../img/logo-fieldManager.png" alt="Logo" class="h-12 pr-4">
+                </a>
+                <div class="text-white text-2xl font-semiboldtracking-widest-extra">
+                    FIELDMANAGER
+                </div>
+            </div>
+            <div class="flex items-center gap-10">
+                <div id="inicial-usuario" class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center text-xl font-semibold text-gray-700">
+                    
+                </div>
+            </div>
+        </header>
+
+        <div class="flex flex-grow">
+            <!-- Sidebar -->
+            <aside class="w-72 min-w-72 bg-palette-secundary-color text-white flex flex-col mt-20 z-10">
+                <nav class="flex-grow p-5 space-y-4 fixed">
+                    <ul class="mb-[34rem] space-y-4">
+                        <li><a href="statistics.html" class="flex w-64 items-center gap-2 p-3 rounded bg-gray-700"><i class="material-icons">home</i>Inicio</a></li>
+                        <li><a href="reservation-management.html" class="flex w-64 items-center gap-2 p-3 rounded hover:bg-gray-700"><i class="material-icons">calendar_today</i>Reservas</a></li>
+                        <li><a href="configuracionCanchas.html" class="flex w-64 items-center gap-2 p-3 rounded hover:bg-gray-700"><i class="material-icons">stadium</i>Canchas</a></li>
+                    </ul>
+                    <div class="mt-auto">
+                        <a id="logoutButton" href="#" class="flex items-center gap-2 p-2 rounded text-red-400 hover:bg-gray-700">
+                            <i class="material-icons">logout</i> Cerrar sesión
+                        </a>
+                  </div>
+                </nav>
+            </aside>
+    <!-- Main Content -->
+        <main class="flex-grow min-h-screen p-10 bg-palette-tertiary-color text-white mt-10">
+            <h1 class="text-3xl font-semibold mb-6 mt-4">Resumen</h1>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Gráfica de barras más ancha -->
+                <div class="lg:col-span-2 bg-palette-secundary-color p-6 rounded-lg shadow-lg">
+                    <h3 class="text-xl font-semibold mb-4 flex items-center">
+                        <i class="material-icons mr-2 text-palette-primary-color">bar_chart</i>
+                        Reservas en los últimos 7 días
+                    </h3>
+                    <canvas id="barChart"></canvas>
+                </div>
+
+                <!-- Gráfica circular -->
+                <div class="bg-palette-secundary-color p-6 rounded-lg shadow-lg">
+                    <h3 class="text-xl font-semibold mb-4 flex items-center">
+                        <i class="material-icons mr-2 text-palette-primary-color">pie_chart</i>
+                        Canchas Más Reservadas
+                    </h3>
+                    <canvas id="pieChart"></canvas>
+                </div>
+
+                <!-- Tarjetas -->
+                <div class="lg:col-span-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-palette-secundary-color p-6 rounded-lg shadow-lg">
+                        <h3 class="text-xl font-semibold mb-2 flex items-center">
+                            <i class="material-icons mr-2 text-palette-primary-color">calendar_today</i>
+                            Reservas Totales
+                        </h3>
+                        <hr class="border-palette-primary-color my-4">
+                        <p id="totalReservations" class="text-3xl font-bold text-center">0</p>
+                    </div>
+
+                    <div class="bg-palette-secundary-color p-6 rounded-lg shadow-lg">
+                        <h3 class="text-xl font-semibold mb-2 flex items-center">
+                            <i class="material-icons mr-2 text-palette-primary-color">cancel</i>
+                            Reservas Canceladas
+                        </h3>
+                        <hr class="border-palette-primary-color my-4">
+                        <p id="totalCancelledReservations" class="text-3xl font-bold text-center">0</p>
+                    </div>
+
+                    <div class="bg-palette-secundary-color p-6 rounded-lg shadow-lg">
+                        <h3 class="text-xl font-semibold mb-2 flex items-center">
+                            <i class="material-icons mr-2 text-palette-primary-color">sports_soccer</i>
+                            Canchas Totales
+                        </h3>
+                        <hr class="border-palette-primary-color my-4">
+                        <p id="totalFields" class="text-3xl font-bold text-center">0</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+        <script type="module" src="../static/js/views/statistics.js"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    </body>
+</html>

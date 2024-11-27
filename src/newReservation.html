@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/img/favicon.ico" type="image/x-icon">
+        <title>FieldManager - Nueva Reserva</title>
+        <link rel="stylesheet" href="../static/styles/styles.css">
+        <link rel="stylesheet" href="../static/styles/output.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    </head>
+    <body class="min-h-screen flex flex-col">
+        <!-- Header -->
+        <header class="fixed top-0 w-full flex justify-between items-center bg-palette-tertiary-color bg-opacity-100 h-20 px-8 z-50">
+            <div class="flex items-center mr-auto">
+                <a href="../src/landingPage.html" class="flex items-center mr-4">
+                    <img src="../img/logo-fieldManager.png" alt="Logo" class="h-12 pr-4">
+                </a>
+                <div class="text-white text-2xl font-semiboldtracking-widest-extra">
+                    FIELDMANAGER
+                </div>
+            </div>
+            <div class="flex items-center gap-10">
+                <div id="inicial-usuario" class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center text-xl font-semibold text-gray-700">
+                    
+                </div>
+            </div>
+        </header>
+        <div class="flex flex-grow">
+            <!-- Sidebar -->
+            <aside class="w-72 min-w-72 bg-palette-secundary-color text-white flex flex-col mt-20 z-10">
+                <nav class="flex-grow p-5 space-y-4 fixed">
+                    <ul class="mb-[34rem] space-y-4">
+                        <li><a href="reservations.html" class="flex w-64 items-center gap-2 p-3 rounded hover:bg-gray-700"><i class="material-icons">event</i> Mis Reservas</a></li>
+                        <li><a href="newReservation.html" class="flex w-64 items-center gap-2 p-3 rounded bg-gray-700"><i class="material-icons">add_circle_outline</i> Nueva Reserva</a></li>
+                        <li><a href="myProfile.html" class="flex w-64 items-center gap-2 p-3 rounded hover:bg-gray-700"><i class="material-icons">person</i> Mi Perfil</a></li>
+                    </ul>
+                    <div class="mt-auto">
+                      <a id="logoutButton" href="#" class="flex items-center gap-2 p-2 rounded text-red-400 hover:bg-gray-700">
+                          <i class="material-icons">logout</i> Cerrar sesión
+                      </a>
+                  </div>
+                </nav>
+            </aside>
+            <!-- Main Content Area -->
+            <main class="flex-grow p-10 bg-palette-tertiary-color text-white">
+                <section class="reservation-container pt-12">
+                    <div class="container m-auto">
+                        <div class="container-section-filter">     
+                            <h2 class="text-3xl mt-5 text-center font-semibold tracking-widest py-5 w-full border-y border-palette-primary-color mb-5">Seleccione una fecha para reservar</h2> 
+                            <div class="field-filters flex justify-center flex-wrap items-center gap-8  mt-12 mb-12 ">                
+                                <div class="relative">
+                                    <input 
+                                    type="date" 
+                                    id="date-search" 
+                                    name="reservations" 
+                                    class="w-72 h-10 p-2 pl-10 pr-14 rounded-md bg-palette-tertiary-color text-white border border-palette-primary-color focus:outline-none focus:ring focus:ring-palette-accent-color appearance-none"
+                                    >
+                                    <i 
+                                    class="fas fa-calendar-alt absolute right-3 top-2.5 text-white text-l cursor-pointer"
+                                    id="calendar-icon"
+                                    ></i>
+                                </div>
+                                <!--<input id="date-search" class="border rounded-md px-5 w-3/12 py-3 mb-0  border-palette-primary-color bg-palette-tertiary-color" type="date">                  -->
+                                <button id ="searchDate"class="text-xl block bg-palette-primary-color py-3 p-5 rounded-md font-semibold hover:bg-white hover:text-palette-accent-color hover:shadow-palette-primary-color text-palette-accent-color" disabled>Buscar cancha </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="fields-container pb-12">
+                    <div class="container m-auto">
+                        <div class="container-section-filter">     
+                            <h2 class="text-3xl mt-5 text-center font-semibold tracking-widest py-5 w-full border-y border-palette-primary-color mb-5">Seleccione una cancha</h2> 
+                            
+                            <ul class="field-list">
+                                <!-- Cancha 1 -->
+                                <li class="no-items-message text-hite text-left text-xl py-4">
+                                    Seleccione una fecha valida para visualizar las canchas.
+                                </li>
+                                <div class="field-data px-10 py-7 bg-palette-secundary-color rounded-lg mb-5 mt-5 hidden">
+                                    <li class="flex flex-col gap-2 p-2 rounded text-white">
+                                        <div class="preview flex items-center cursor-pointer" onclick="toggleExpand(this.closest('.field-data'))">
+                                            <div class="flex gap-8 flex-grow">
+                                                <span class="flex item-center font-bold  text-xl"><i class="material-icons mr-4">sports_soccer</i>Cancha 1</span>
+                                                <span class="flex item-center text-xl"><i class="material-icons mr-4">schedule</i>Horarios: 08:00 - 22:00</span>
+                                                <span class="flex item-center text-xl"><i class="material-icons mr-4">group</i>Jugadores recomendados: 24</span>
+                                                <span class="flex item-center text-xl"><i class="material-icons mr-4">grass</i>Terreno: césped sintético</span>
+                                            </div>                                           
+                                            <div class="ml-auto">
+                                                <i class="material-icons">keyboard_double_arrow_down</i>
+                                            </div>                                         
+                                        </div>                                                                                                                                                                                                                                            
+                                        <div class="content gap-2 hidden px-6 rounded-lg">
+                                            <div class="flex justify-between items-center mb-2 cursor-pointer" onclick="toggleExpand(this.closest('.field-data'))">
+                                                <div class="flex-grow"></div> 
+                                                <div class="mr-0"> 
+                                                    <i class="material-icons">keyboard_double_arrow_up</i>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-stretch">                                                                                   
+                                                <div class="flex">
+                                                    <img src="../img/field5cemento_image.png" alt="Imagen de la cancha" class="w-[42rem] h-auto rounded-lg mb-5">
+                                                </div>
+                                                <div class= "border-l-2 border-palette-primary-color h-auto mx-2 my-4 ml-10 mr-24"></div>
+                                                <div>
+                                                    <div class="flex">
+                                                        <ul>
+                                                            <li class=" text-white text-xl w-90 h-10 rounded-lg flex py-2 mb-4">
+                                                                <i class="material-icons mr-4">schedule</i>Horarios: 08:00 - 22:00
+                                                            </li>
+                                                            <li class="text-white text-xl w-90 h-10 rounded-lg flex  py-2 mb-4">
+                                                                <i class="material-icons mr-4">group</i>Jugadores recomendados: 24
+                                                            </li>
+                                                            <li class="text-white text-xl w-90 h-10 rounded-lg flex py-2">
+                                                                <i class="material-icons mr-4">grass</i>Terreno: Césped sintético
+                                                            </li>
+                                                        </ul>
+                                                    </div>                        
+                                                    <div class="py-5 mb-2">                                      
+                                                        <h2 class= "text-white text-xl mb-6"><i class="material-icons mr-4 align-middle">update</i>Seleccione un horario disponible</h2>
+                                                        <ul class="space-y-1">
+                                                            <div class="flex flex-wrap gap-2">
+                                                                <button class="bg-palette-tertiary-color text-white text-xl w-16 h-10 rounded-lg font-mono flex items-center justify-center py-2 px-4">
+                                                                    08:00
+                                                                </button>
+                                                                <button class="bg-palette-tertiary-color text-white text-xl w-16 h-10 rounded-lg font-mono  flex items-center justify-center py-2 px-4">
+                                                                    10:00
+                                                                </button>
+                                                                <button class="bg-palette-tertiary-color text-white text-xl w-16 h-10 rounded-lg font-mono flex items-center justify-center py-2 px-4">
+                                                                    12:00
+                                                                </button>
+                                                                <button class="bg-palette-tertiary-color text-white text-xl w-16 h-10 rounded-lg font-mono  flex items-center justify-center py-2 px-4">
+                                                                    14:00
+                                                                </button>
+                                                                <button class="bg-palette-tertiary-color text-white text-xl w-16 h-10 rounded-lg font-mono flex items-center justify-center py-2 px-4">
+                                                                    16:00
+                                                                </button>
+                                                                <button class="bg-palette-tertiary-color text-white text-xl w-16 h-10 rounded-lg font-mono  flex items-center justify-center py-2 px-4">
+                                                                    18:00
+                                                                </button>
+                                                                <button class="bg-palette-tertiary-color  text-white text-xl w-16 h-10 rounded-lg font-mono  flex items-center justify-center py-2 px-4">
+                                                                20:00
+                                                                </button>
+                                                          </div>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="flex flex-col gap-2 align-middle mb-12">
+                                                        <div>
+                                                            <h2 class="text-white text-xl mb-6"><i class="material-icons mr-4 align-middle text-xl">group_add</i>Seleccione la cantidad de jugadores</h2>                                                          
+                                                        </div>                                 
+                                                        <div>
+                                                            <input type="number" min="1" placeholder="2" class="border rounded-md px-5 w-3/12 py-3 mb-0 align-middle border-palette-primary-color bg-palette-tertiary-color">
+                                                        </div>   
+                                                    </div>
+                                   
+                                                </div>                                                                                                             
+                                            </div>
+                                            
+                                            <div class="border-b-2 border-palette-primary-color my-4"></div>
+                                            <div class="w-full flex justify-center mt-10 mb-2">
+                                                <button class="btn-start-now text-xl block btn-shadow bg-palette-primary-color py-3 p-5 rounded-md font-semibold shadow-white shadow hover:bg-white hover:text-palette-accent-color hover:shadow-palette-primary-color text-palette-accent-color">Realizar reserva</button>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </div>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+
+        <!-- Footer -->
+        
+        
+        <script src="../static/js/components/viewFieldDetails.js"></script>
+        <script type="module" src="../static/js/views/newReservationApp.js"></script>
+        
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+        
+    </body>
+</html>
